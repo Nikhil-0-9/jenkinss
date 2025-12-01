@@ -1,0 +1,22 @@
+pipeline{
+agent any
+stages{
+stage("checkout"){
+steps{
+git branch:"main",url:"https://github.com/Nikhil-0-9/jenkinss"
+}}
+stage("build and test"){
+steps{
+sh'echo"building..."'
+sh'pytest>result.log||true'
+sh'cat result.log'
+}
+}
+stage("deploy"){
+steps{
+sh'echo"deploying"'
+}
+}
+}
+}
+
